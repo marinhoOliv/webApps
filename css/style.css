@@ -46,14 +46,26 @@ body {
 	box-sizing: border-box;
 }
 
+.cartao--fontePequena {
+	font-size: 1em;
+	width: 15em;
+	flex-basis: 15em;
+}
+.cartao--fonteMedia {
+	font-size: 1.5em;
+	width: 10em;
+	flex-basis: 10em;
+}
+.cartao--fonteGrande {
+	font-size: 2em;
+	width: 8em;
+	flex-basis: 8em;
+}
+
 .mural--linhas .cartao {
 	display: block;
 	flex-basis: auto;
 	width: auto;
-}
-
-.cartao-conteudo {
-
 }
 
 #mudaLayout {

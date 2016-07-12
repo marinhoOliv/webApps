@@ -28,9 +28,9 @@
 	transition: height .1s linear;
 }
 
-.novoCartao-conteudo:focus {
+/*.novoCartao-conteudo:focus {
 	height: 7em
-}
+}*/
 
 .novoCartao-salvar {
 	font-size: 1em;

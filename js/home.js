@@ -26,12 +26,35 @@ function removeCartao() {
 	}, 400)
 }
 
+// Decide o tipo de cartao
+function decideTipoDoCartao (conteudo) {
+	var qtdaChar = conteudo.replace(/<br>/g, "").length;
+	var linhas = conteudo.split("<br>").length;
+	var palavras = conteudo.replace(/<br>/g, "").split("");
+	var maior = "";
+
+	palavras.forEach(function (palavra) {
+		if (palavra.length > maior.length) {
+			maior = palavra;
+		}
+	});
+
+	var tipo = "cartao--fontePequena";
+	if (qtdaChar < 40 && linhas < 3 && maior.length < 6) {
+		tipo = "cartao--fonteGrande";
+	} else if (qtdaChar < 50 && linhas < 6 && maior.length < 10){
+		tipo = "cartao--fonteMedia";
+	};
+	return tipo;
+}
+
 var contador = $(".cartao").length;
 $(".novoCartao").submit(function (e) {
 	e.preventDefault();
 
 	var campo = $(".novoCartao-conteudo");
-	var conteudo = campo.val();
+	var conteudo = campo.val().trim().replace(/\n/g, "<br>").replace(/\*\*(.*)\*\*/, '<b>$1</b>')
+	.replace(/\*(.*)\*/, '<em>$1</em>');
 
 	if (conteudo) {
 		contador++;
@@ -42,9 +65,12 @@ $(".novoCartao").submit(function (e) {
 
 		var opcoes = $("<div>").addClass("opcoesDoCartao").append(remove);
 
-		var p = $("<p>").addClass("cartao-conteudo").text(conteudo);
+		var p = $("<p>").addClass("cartao-conteudo").html(conteudo);
 
-		$("<div>").addClass("cartao").attr("id", "cartao_" + contador).append(opcoes)
+		var tipo = decideTipoDoCartao(conteudo);
+
+		$("<div>").addClass("cartao").addClass(tipo).attr("id", "cartao_" + contador)
+		.append(opcoes)
 		.append(p).prependTo(".mural");
 	}
 	campo.val("");

@@ -10,12 +10,15 @@
 body {
 	background-color: #E8E8E8;
 }
+
 .cabecalho {
 	background-color: #0082c7;
 }
+
 .container {
 	padding: 0 10%;
 }
+
 .mural {
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -24,7 +27,12 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 }
+.mural--linhas {
+	flex-direction: column;
+}
+
 .cartao {
+	position: relative;
 	display: inline-block;
 	width: 200px;
 	background-color: #ebef40;
@@ -37,6 +45,28 @@ body {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+.mural--linhas .cartao {
+	display: block;
+	flex-basis: auto;
+	width: auto;
+}
+
 .cartao-conteudo {
 
+}
+
+#mudaLayout {
+	display: none;
+}
+
+@media (min-width: 560px){
+	#mudaLayout {
+		display: inline-block;
+		-webkit-transition: all .5s ease-in-out;
+		   -moz-transition: all .5s ease-in-out;
+		    -ms-transition: all .5s ease-in-out;
+		     -o-transition: all .5s ease-in-out;
+		        transition: all .5s ease-in-out;
+	}
 }

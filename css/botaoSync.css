@@ -1,0 +1,23 @@
+.botaoSync {
+	line-height: 0;
+	fill: currentcolor;
+	border-radius: 50%;
+}
+
+@keyframes rodaRodaJequiti {
+	to {
+		transform: rotate(180deg);
+	}
+}
+
+.botaoSync--error {
+	background: #ED7F6C;
+}
+
+.botaoSync--anima {
+	animation: rodaRodaJequiti .5s linear infinite;
+}
+
+.botaoSync--success {
+	background: #39B5AC;
+}
